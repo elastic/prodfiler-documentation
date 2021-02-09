@@ -1,0 +1,74 @@
+{
+  "executionRoleArn": "_ecsRoleArn_",
+  "containerDefinitions": [
+    {
+      "entryPoint": [
+        "/root/pf-host-agent"
+      ],
+      "command": [
+        "-t=_tracers_",
+        "-collection-agent=_collectionAgentHostPort_",
+        "-project-id=_projectId_",
+        "-optimyze-homedir=/opt/optimyze",
+        "-config=/dev/null",
+        "-secret-token=_secretToken_"
+      ],
+      "linuxParameters": {
+        "capabilities": {
+          "add": [
+            "SYS_ADMIN"
+          ]
+        }
+      },
+      "cpu": 512,
+      "environment": [
+          {
+            "name": "GODEBUG",
+            "value": "madvdontneed=1"
+          }
+      ],
+      "repositoryCredentials": {
+        "credentialsParameter": "_pullSecretArn_"
+      },
+      "mountPoints": [
+        {
+          "readOnly": true,
+          "containerPath": "/sys/kernel/debug",
+          "sourceVolume": "kerneldebug"
+        },
+        {
+          "readOnly": true,
+          "containerPath": "/etc/machine-id",
+          "sourceVolume": "machineid"
+        }
+      ],
+      "memory": 512,
+      "memoryReservation": 400,
+      "image": "optimyze/pf-host-agent:_version_",
+      "essential": true,
+      "user": "root",
+      "name": "prodfiler"
+    }
+  ],
+  "memory": "512",
+  "family": "optimyze-prodfiler",
+  "pidMode": "host",
+  "requiresCompatibilities": [
+    "EC2"
+  ],
+  "cpu": "512",
+  "volumes": [
+    {
+      "name": "machineid",
+      "host": {
+        "sourcePath": "/etc/machine-id"
+      }
+    },
+    {
+      "name": "kerneldebug",
+      "host": {
+        "sourcePath": "/sys/kernel/debug"
+      }
+    }
+  ]
+}
