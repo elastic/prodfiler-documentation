@@ -1,7 +1,7 @@
 # Getting started with Prodfiler
 
 Getting started with Prodfiler is easy: You create an account and a project, receive instructions
-with which you can launch the agent, and about 30 minutes after the agent is deployed, you should
+with which you can launch the agent, and 30 minutes after the agent is deployed, you should
 have information you can inspect.
 
 ## Signing up for an account
@@ -148,5 +148,57 @@ with.
 
 # Dealing with missing symbols
 
+By default, Prodfiler should symbolize stack frames for upstream binaries from the Ubuntu and Debian
+package repositories.
+
+For many other executables, it may happen that Prodfiler does not immediately have access to the
+symbols in question. This will be visible in the stacktraces and flamegraphs:
+
+![top n functions screenshot](./pictures/no-symbols.png)
+
+In order to provide symbols to Prodfiler, please use the bash script located in 
+[./scripts/upload_symbols.sh](./scripts/upload_symbols.sh).
+
+## Unstripped Golang binaries
+
+For unstripped Golang binaries, the easiest way to get the stack frames symbolized is simply running
+```
+./upload_symbols.sh -u [your email address] -d ./[the executable in question]
+```
+
+**Please note that this sends the binary to our backend infrastructure! Do not do this if you
+are not comfortable with the executable being processed and stored outside of your infrastructure.**
+
+## Stripped Golang binaries
+
+Stripped Golang binaries still retain a lot of the relevant information in the `.gopclntab` section.
+This means you can submit the symbols from these executables by doing
+
+```
+./upload_symbols.sh -u [your email address] -d ./[the executable in question] -p
+```
+
+This has some downsides: In particular, cgo frames will likely not be symbolized as result. Whenever
+possibly, try to provide full DWARF symbols.
+
+## Unstripped C/C++ binaries
+
+Unstripped C/C++ binaries can be uploaded just like unstripped Golang binaries.
+
+## C/C++ binaries with separate DWARF file
+
+Many Linux distributions (but also some build systems) generate the DWARF information into a
+separate ELF file. This is the default on Debian and Ubuntu-based systems.
+
+```
+./upload_symbols.sh -u [your email address] -d ./[the executable in question] -g ./[dwarf file]
+```
+
+## Stripped C/C++ binaries
+
+Sometimes it is difficult to get any DWARF information for an already-deployed binary. We are
+working on a solution that - in extreme circumstances - can be used to import symbols from a
+*similar* executable, e.g. the same software and version compiled from scratch. Please reach out
+if you have a need for this so we can prioritize the development accordingly.
 
 
