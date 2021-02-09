@@ -140,8 +140,8 @@ The cost and CO2 estimates are based on assumptions that are documented in the
 You can share a single project among multiple users by clicking on the three dots to the right of
 the project name and selecting "People":
 
-![top n functions screenshot](./pictures/share-project-1.png)
-![top n functions screenshot](./pictures/share-project-2.png)
+![share project1](./pictures/share-project-1.png)
+![share project2](./pictures/share-project-2.png)
 
 You will need to write the full email address of the other user you wish to share the project
 with.
@@ -154,10 +154,14 @@ package repositories.
 For many other executables, it may happen that Prodfiler does not immediately have access to the
 symbols in question. This will be visible in the stacktraces and flamegraphs:
 
-![top n functions screenshot](./pictures/no-symbols.png)
+![no symbols](./pictures/no-syms.png)
 
 In order to provide symbols to Prodfiler, please use the bash script located in 
 [./scripts/upload_symbols.sh](./scripts/upload_symbols.sh).
+
+Please be aware that this process can take some time: Even if the symbols are
+present in our backend, there can be a signficant lag (up to 30 minutes) between the backend having
+the symbols and the corresponding frames being symbolized properly.
 
 ## Unstripped Golang binaries
 
