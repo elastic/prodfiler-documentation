@@ -20,9 +20,9 @@ a bit of a mouthful; in practice this means that Prodfiler can answer the questi
 Prodfiler is inspired by software available inside some Hyperscalers, most notably Google and
 Facebook. Google has an internal system called
 '[Google-Wide Profiling](https://research.google/pubs/pub36575/)', which has led to very significant
-savings, a culture of performance awareness/improvement, and to long-term developmens such as
+savings, a culture of performance awareness/improvement, and to long-term developments such as
 [SwissTables](https://abseil.io/about/design/swisstables) and even the various hardware offload
-designs. Likewise, Facebook has a system called 'sdfsd', which is described in
+designs. Likewise, Facebook runs a system, which is described in
 [this talk](https://databricks.com/session_eu19/using-production-profiles-to-guide-optimizations)
 from the SPARK AI Summit.
 
