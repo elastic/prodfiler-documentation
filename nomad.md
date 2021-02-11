@@ -1,6 +1,7 @@
 # Deploying via Nomad
 
-Below an example Nomad config to deploy the agent on 20% of machines, up to 100 deployments:
+Below an example Nomad config to deploy the agent on 20% of machines, up to 100 deployments.
+Replace the `task.config.auth.password` placeholder with the token released to you by your Optimyze contact.
 
 ```
 job "prodfiler-agent" {
@@ -49,7 +50,7 @@ job "prodfiler-agent" {
         privileged = true
         auth {
           username = "optimyzeprodfilerbeta"
-          password = "betaprodfiler"
+          password = "<PASSWORD>"
         }
         force_pull = true
         pid_mode = "host"
@@ -69,4 +70,3 @@ job "prodfiler-agent" {
   }
 }
 ```
-
