@@ -12,7 +12,8 @@ The agent is deployed as a DaemonSet and requires a `privileged` security contex
 
 * Add the Helm repository hosting the Optimyze charts, you only need to run this when first installing:
   ```bash
-  helm repo add optimyze-prodfiler s3://optimyze-prodfiler-deployment/charts/pf-host-agent
+  helm repo add optimyze https://optimyze.cloud/helm-charts
+  helm repo update
   ```
 
 * Fetch the `projectID` and `secretToken` values visible in the Prodfiler web UI
@@ -25,7 +26,7 @@ The agent is deployed as a DaemonSet and requires a `privileged` security contex
   ```bash
   helm install --namespace=prodfiler pf-host-agent \
   --set "projectID=<projectID>,secretToken=<secretToken>" \
-  optimyze-prodfiler/pf-host-agent
+  optimyze/pf-host-agent
   ```
 
 ## Customizing values
@@ -34,7 +35,7 @@ For more complex deployment you may want to customize Helm values.
 You can list the possible values using:
 
 ```bash
-helm show values optimyze-prodfiler/pf-host-agent
+helm show values optimyze/pf-host-agent
 ```
 
 The most notable configuration knobs are `nodeSelector` and `tolerations` to deploy Prodfiler Host Agent

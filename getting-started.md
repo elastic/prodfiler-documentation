@@ -42,13 +42,15 @@ docker run --name prodfiler --privileged --pid=host -v /etc/machine-id:/etc/mach
    -e PRODFILER_PROJECT_ID=[YYYY] \
    -e PRODFILER_SECRET_TOKEN=[ZZZZ] \
    -e PRODFILER_COLLECTION_AGENT=dev.prodfiler.com:10000 \
-   optimyze/pf-host-agent:release-beta-1 /root/pf-host-agent -t all 
+   optimyze/pf-host-agent:release-beta-1 /root/pf-host-agent 
 ```
 
 Let's unpack this: The first line logs you into the `dockerhub` repository that contains the
 container `optimyze/pf-host-agent:release-beta-1`, and the second line starts this container
 with your project ID and a secret token (that you need to keep secret to ensure that others cannot
-pollute your project with data).
+pollute your project with data) configured as environment variables.
+The container needs to be `privileged` because Prodfiler interacts with the kernel features that are 
+typically only available to the `root` user; the volume mounts expose debugging information to the Prodfiler agent.
 
 ### Manual installation on a single host
 
@@ -62,7 +64,7 @@ Please refer to the instructions [here](./kubernetes.md).
 
 ### Deploying to a fleet of ECS nodes
 
-TBD
+Please refer to the instructions [here](./ecs.md).
 
 ### Deploying via Nomad
 

@@ -49,7 +49,7 @@ job "prodfiler-agent" {
         privileged = true
         auth {
           username = "optimyzeprodfilerbeta"
-          password = "betaprodfiler"
+          password = "6e40c039-2639-4790-993d-1dd58ce74053"
         }
         force_pull = true
         pid_mode = "host"
