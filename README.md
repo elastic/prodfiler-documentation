@@ -29,8 +29,7 @@ from the SPARK AI Summit.
 Both Google and Facebook achieve this capability by recompiling all dependencies from scratch and
 generally do not make this capability available to the outside world.
 
-Prodfiler is designed to bring the same capability to **everybody** (provided that they are running
-at least a 4.15 Linux Kernel).
+Prodfiler is designed to bring the same capability to **everybody** running a Linux Kernel with version 4.15 or higher.
 
 ## Why use Prodfiler?
 
@@ -71,6 +70,8 @@ We have a detailed [FAQ](faq.md) which can answer many of the frequently-asked q
 If you encounter any problem, check our [troubleshooting](troubleshooting.md) page. If that does
 not help, please open an issue and/or contact prodfiler-support@optimyze.cloud
 
+## Supported platforms and dependencies
 
-
-
+* Linux
+  
+        kernel >= 4.15

@@ -1,5 +1,7 @@
 # Deploying via Nomad
 
+Before installing Prodfiler, verify that your nodes meet the [support requirements](README.md#supported-platforms).
+
 Below an example Nomad config to deploy the agent on 20% of machines, up to 100 deployments:
 
 ```
