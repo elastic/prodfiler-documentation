@@ -38,7 +38,7 @@ echo "get the task execution role ARN"
 ecsRoleArn=$(aws iam get-role --role-name ecsProdfilerTaskExecutionRole | jq -r '.Role.Arn')
 
 echo "building temporary file to hold ECS task cli-input-json"
-tmpFile=$(mktemp -p $PWD -t task_XXX.json)
+tmpFile=$(mktemp -t task_XXX.json)
 awk '{ gsub("_pullSecretArn_",p); gsub("_ecsRoleArn_",e); gsub("_collectionAgentHostPort_",c); gsub("_projectId_",pr); gsub("_version_",v); gsub("_tracers_",t); gsub("_secretToken_",s);print }' \
   p="$pullSecretArn" e="$ecsRoleArn" c="$collectionAgentHostPort" pr="$projectId" v="$version" t="$tracers" s="$secretToken"\
   task.json.template > $tmpFile
