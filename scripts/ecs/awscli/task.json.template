@@ -13,6 +13,7 @@
         "-config=/dev/null",
         "-secret-token=_secretToken_"
       ],
+      "privileged": true,
       "linuxParameters": {
         "capabilities": {
           "add": [
