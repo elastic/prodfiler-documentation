@@ -2,6 +2,8 @@
 
 The agent is deployed as a DaemonSet and requires a `privileged` security context as it needs access to the nodes' kernel features.
 
+Before installing Prodfiler, verify that your nodes meet the [support requirements](README.md#supported-platforms).
+
 ## Quick start installation
 
 * Create a namespace to host Prodfiler (and optionally label it), here we use `prodfiler`:

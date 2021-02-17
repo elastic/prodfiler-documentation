@@ -5,6 +5,11 @@ To setup Prodfiler on ECS two scripts should be run on a Linux/Mac (respect the 
 and IAM resources to consume the secret
 * `prodfiler-ecs-task.sh`: deploys a `DAEMON` task in an already-existing ECS cluster
 
+Before installing Prodfiler, verify that your nodes meet the [support requirements](README.md#supported-platforms).
+So far, the default Linux AMI 2 ships with an unsupported Linux kernel version (4.14); check the
+[Amazon Linux 2 AMI release notes](https://aws.amazon.com/amazon-linux-2/release-notes/) to verify 
+support for the current kernel version.  
+
 ## ECS support
 
 Currently Prodfiler is available only on ECS clusters with **EC2 launch type**.
