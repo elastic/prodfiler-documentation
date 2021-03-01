@@ -165,7 +165,7 @@ symbols in question. This will be visible in the stacktraces and flamegraphs:
 ![no symbols](./pictures/no-syms.png)
 
 In order to provide symbols to Prodfiler, please use the bash script located in 
-[./scripts/upload_symbols.sh](./scripts/upload_symbols.sh).
+[./scripts/upload_symbols.sh](https://github.com/optimyze/prodfiler-documentation/blob/main/scripts/upload-symbols.sh).
 
 Please be aware that this process can take some time: Even if the symbols are
 present in our backend, there can be a signficant lag (up to 30 minutes) between the backend having
