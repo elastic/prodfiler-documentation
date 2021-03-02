@@ -143,6 +143,10 @@ that the current workload is representative.
 The cost and CO2 estimates are based on assumptions that are documented in the 
 [feature reference](feature-reference.md).
 
+## Filtering the results
+
+Please refer to the instructions [here](./filtering.md).
+
 ## Sharing your project with other users
 
 You can share a single project among multiple users by clicking on the three dots to the right of
