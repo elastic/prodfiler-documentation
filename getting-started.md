@@ -42,11 +42,11 @@ docker run --name prodfiler --privileged --pid=host -v /etc/machine-id:/etc/mach
    -e PRODFILER_PROJECT_ID=[YYYY] \
    -e PRODFILER_SECRET_TOKEN=[ZZZZ] \
    -e PRODFILER_COLLECTION_AGENT=dev.prodfiler.com:10000 \
-   optimyze/pf-host-agent:release-beta-1 /root/pf-host-agent 
+   optimyze/pf-host-agent:release-beta-2 /root/pf-host-agent 
 ```
 
 Let's unpack this: The first line logs you into the `dockerhub` repository that contains the
-container `optimyze/pf-host-agent:release-beta-1`, and the second line starts this container
+container `optimyze/pf-host-agent:release-beta-2`, and the second line starts this container
 with your project ID and a secret token (that you need to keep secret to ensure that others cannot
 pollute your project with data) configured as environment variables.
 The container needs to be `privileged` because Prodfiler interacts with the kernel features that are 
@@ -216,5 +216,3 @@ Sometimes it is difficult to get any DWARF information for an already-deployed b
 working on a solution that - in extreme circumstances - can be used to import symbols from a
 *similar* executable, e.g. the same software and version compiled from scratch. Please reach out
 if you have a need for this so we can prioritize the development accordingly.
-
-
