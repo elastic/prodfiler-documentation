@@ -12,7 +12,7 @@ The agent is deployed as a DaemonSet and requires a `privileged` security contex
 
 * Add the Helm repository hosting the Optimyze charts, you only need to run this when first installing:
   ```bash
-  helm repo add optimyze s3://optimyze.cloud/helm-charts
+  helm repo add optimyze https://optimyze.cloud/helm-charts
   ```
 
 * Fetch the `projectID`, `secretToken` and `accessToken` values visible in the Prodfiler web UI  when creating a new project.
