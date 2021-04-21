@@ -36,13 +36,13 @@ documentation so you can deploy on Kubernetes, ECS, or Nomad.
 The command line that is shown looks as follows:
 
 ```
-docker login -u optimyzeprodfilerbeta -p [XXX];
+docker login -u optimyzeprodfilerbeta -p [XXXX];
 docker run --name prodfiler --privileged --pid=host -v /etc/machine-id:/etc/machine-id:ro \
    -v /sys/kernel/debug:/sys/kernel/debug:ro -v /dev/null:/etc/prodfiler/prodfiler.conf \
    -e PRODFILER_PROJECT_ID=[YYYY] \
    -e PRODFILER_SECRET_TOKEN=[ZZZZ] \
    -e PRODFILER_COLLECTION_AGENT=dev.prodfiler.com:10000 \
-   optimyze/pf-host-agent:release-beta-3 /root/pf-host-agent 
+   optimyze/pf-host-agent:release-beta-3 /root/pf-host-agent -t all
 ```
 
 Let's unpack this: The first line logs you into the `dockerhub` repository that contains the
