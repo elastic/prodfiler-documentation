@@ -41,7 +41,7 @@ docker run --name prodfiler --privileged --pid=host -v /etc/machine-id:/etc/mach
    -v /sys/kernel/debug:/sys/kernel/debug:ro -v /dev/null:/etc/prodfiler/prodfiler.conf \
    -e PRODFILER_PROJECT_ID=[YYYY] \
    -e PRODFILER_SECRET_TOKEN=[ZZZZ] \
-   -e PRODFILER_COLLECTION_AGENT=dev.prodfiler.com:10000 \
+   -e PRODFILER_COLLECTION_AGENT=data.dev.prodfiler.com:443 \
    optimyze/pf-host-agent:release-beta-6 /root/pf-host-agent -t all
 ```
 
