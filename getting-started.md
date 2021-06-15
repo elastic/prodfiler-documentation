@@ -49,12 +49,12 @@ Let's unpack this: The first line logs you into the `dockerhub` repository that 
 container `optimyze/pf-host-agent:release-beta-6`, and the second line starts this container
 with your project ID and a secret token (that you need to keep secret to ensure that others cannot
 pollute your project with data) configured as environment variables.
-The container needs to be `privileged` because Prodfiler interacts with the kernel features that are 
+The container needs to be `privileged` because Prodfiler interacts with kernel features that are
 typically only available to the `root` user; the volume mounts expose debugging information to the Prodfiler agent.
 
 ### Manual installation on a single host
 
-If you wish to deploy the profiling agent to a single host, you can simply cut & paste the above
+If you wish to deploy the profiling agent to a single host, you can simply copy & paste the above
 command line and run it (with the appropriate privileges) on a machine (or a set of machines) you
 wish to profile.
 
@@ -172,7 +172,7 @@ In order to provide symbols to Prodfiler, please use the bash script located in
 [./scripts/upload_symbols.sh](https://github.com/optimyze/prodfiler-documentation/blob/main/scripts/upload-symbols.sh).
 
 Please be aware that this process can take some time: Even if the symbols are
-present in our backend, there can be a signficant lag (up to 30 minutes) between the backend having
+present in our backend, there can be significant lag (up to 30 minutes) between the backend having
 the symbols and the corresponding frames being symbolized properly.
 
 ## Unstripped Golang binaries
@@ -194,8 +194,8 @@ This means you can submit the symbols from these executables by doing
 ./upload_symbols.sh -u [your email address] -d ./[the executable in question] -p
 ```
 
-This has some downsides: In particular, cgo frames will likely not be symbolized as result. Whenever
-possibly, try to provide full DWARF symbols.
+This has some downsides: In particular, cgo frames will likely not be symbolized. Whenever
+possible, try to provide full DWARF symbols.
 
 ## Unstripped C/C++ binaries
 
@@ -215,4 +215,4 @@ separate ELF file. This is the default on Debian and Ubuntu-based systems.
 Sometimes it is difficult to get any DWARF information for an already-deployed binary. We are
 working on a solution that - in extreme circumstances - can be used to import symbols from a
 *similar* executable, e.g. the same software and version compiled from scratch. Please reach out
-if you have a need for this so we can prioritize the development accordingly.
+if you have a need for this so we can prioritize development accordingly.

@@ -5,7 +5,7 @@ To setup Prodfiler on ECS two scripts should be run on a Linux/Mac (respect the 
 and IAM resources to consume the secret
 * `prodfiler-ecs-task.sh`: deploys a `DAEMON` task in an already-existing ECS cluster
 
-Before installing Prodfiler, verify that your nodes meet the [support requirements](README.md#supported-platforms).
+Before installing Prodfiler, verify that your nodes meet the [requirements](README.md#supported-platforms).
 So far, the default Linux AMI 2 ships with an unsupported Linux kernel version (4.14); check the
 [Amazon Linux 2 AMI release notes](https://aws.amazon.com/amazon-linux-2/release-notes/) to verify 
 support for the current kernel version.  
@@ -27,16 +27,16 @@ To run this script we suggest to use AWS credentials with the following policies
 
 Both scripts are _not_ idempotent so they should be executed from AWS credentials 
 with the proper authorizations to manage the impacted resources. If the script fails during the execution,
-the resources created so far will have to be deleted manually for the script to succeed on then next run.
+the resources created so far will have to be deleted manually for the script to succeed on the next run.
 
-Scripts use AWS CLI v2, refer to [the official doc](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)
+Scripts use AWS CLI v2, refer to [the official documentation](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)
 to set it up. 
 
-To see the help message, call the scripts with `-h` or `--help`.
+To see the help message, execute the scripts with `-h` or `--help`.
 
 ### Authentication and secrets
 
-Use the provided credentials to access the private Docker image as arguments of this script.
+Pass the provided credentials as arguments to this script in order to access the private Docker image.
 Replace the `<PASSWORD>` placeholder content with the token released to you by your Optimyze contact.
 Run this command from the root of the `scripts/ecs/awscli` directory:
 
