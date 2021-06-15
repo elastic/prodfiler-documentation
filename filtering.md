@@ -44,7 +44,7 @@ There are currently 3 types of keys that can be provided to filter hosts:
 
 * `host:hostname`: the hostname of the machine that is running the Prodfiler agent.
 * `host:ip`: the IP address of the machine.  
-  In multiple IPs are possible, only one is used: the IP address of the interface through which the Prodfiler traffic is routed.
+  When multiple IPs are possible, only one is used: the IP address of the interface through which the Prodfiler traffic is routed.
 * `host:kernel_version`: the output of `uname -r` on the machine.
 * `host:kernel_proc_version`: the contents of `/proc/version` on the machine.
 
@@ -124,12 +124,12 @@ Where `<iface-index>` and `<cfg-index>` should usually only have `0` as a valid 
 
 * **Q: Why is a query returning obscure errors?**  
   A: Currently, the error messages returned are not self-explanatory. Sorry! Make sure the query adheres to the above syntax, or feel free to contact us for assistance.
-* **Q: Why are there not results returned?**  
+* **Q: Why are there no results returned?**
   A: Some things to check:  
   * There is no validation on the key names. For example, if you use `ec3:ami-id` instead of `ec2:ami-id`, no results will be returned, and no error will be raised.
 * **Q: Why are there too many results returned?**  
   A: Some things to check:
     * Make sure the values in the filter can be interpreted as RE2 regular expressions.
     Add beginning-of-line and end-of-line matchers if necessary (respectively, `^` and `$`), and remember that `.` matches any character.
-* **Q: is it possible to know how many / what hosts were matched by a filter?**  
+* **Q: Is it possible to know how many / what hosts were matched by a filter?**
   Not at the moment.

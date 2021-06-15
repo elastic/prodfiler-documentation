@@ -1,6 +1,6 @@
 # Prodfiler host agent
 This chart installs Prodfiler host agent in your cluster.
-The agent is deployed as a DaemonSet and requires a `privileged` security context as it needs access to the nodes' kernel features.
+The agent is deployed as a DaemonSet and requires a `privileged` security context as it needs access to the node kernel features.
 
 ## Quick start installation
 
