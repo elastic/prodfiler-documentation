@@ -72,12 +72,5 @@ Please refer to the instructions [here](./nomad.md).
 
 ### Next steps
 
-After about 30 minutes, you should have a bit of data to inspect:
-
-* [Traces](./feature-reference.md#the-traces-view)
-* [Functions](./feature-reference.md#the-functions-view)
-* [Flamegraph](./feature-reference.md#the-flamegraph-view)
-* [Managing projects](./feature-reference.md#managing-projects)
-* [Filtering the results](./filtering.md)
-* [Missing symbols](./feature-reference.md#dealing-with-missing-symbols)
+After about 30 minutes, you should have a bit of data to [inspect](./feature-reference.md).
 

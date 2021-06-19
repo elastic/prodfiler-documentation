@@ -1,5 +1,12 @@
 # Prodfiler feature reference
 
+* [Managing projects](#managing-projects)
+* [Traces](#the-traces-view)
+* [Functions](#the-functions-view)
+* [Flamegraph](#the-flamegraph-view)
+* [Filtering the results](./filtering.md)
+* [Missing symbols](#dealing-with-missing-symbols)
+
 ## Managing projects
 
 ### Sharing your project with other users
