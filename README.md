@@ -72,6 +72,5 @@ not help, please open an issue and/or contact prodfiler-support@optimyze.cloud
 
 ## Supported platforms and dependencies
 
-* Linux
-  
-        kernel >= 4.15
+* Linux x86_64 with kernel version >= 4.15
+
