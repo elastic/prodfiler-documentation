@@ -71,7 +71,6 @@ Values for CPU-derived keys are collected from /proc, sysfs and through CPUID:
 * `host:cpu/<cpu-idx>/clock/max-mhz`: integer, may not exist on every machine.
 * `host:cpu/<cpu-idx>/clock/min-mhz`: integer, may not exist on every machine.
 * `host:cpu/<cpu-idx>/clock/scaling-cur-freq-mhz`: integer, may not exist on every machine.
-
 * `host:cpu/<cpu-idx>/architecture`: "x86_64" always.
 * `host:cpu/<cpu-idx>/bugs`: comma-separated list of CPU bugs, taken from `/proc/cpuinfo`.
 * `host:cpu/<cpu-idx>/flags`: comma-separated list of CPU flags, taken from `/proc/cpuinfo`.
@@ -79,18 +78,8 @@ Values for CPU-derived keys are collected from /proc, sysfs and through CPUID:
 * `host:cpu/<cpu-idx>/model-name`: taken from `/proc/cpuinfo`.
 * `host:cpu/<cpu-idx>/stepping`: taken from `/proc/cpuinfo`.
 * `host:cpu/<cpu-idx>/vendor`: taken from `/proc/cpuinfo`.
-
-* `host:cpu/<cpu-idx>/cpus`: integer or "ERR".
-* `host:cpu/<cpu-idx>/cache/L1d-kbytes`: integer or "ERR".
-* `host:cpu/<cpu-idx>/cache/L1i-kbytes`: integer or "ERR".
-* `host:cpu/<cpu-idx>/cache/L2-kbytes`: integer or "ERR".
-* `host:cpu/<cpu-idx>/cache/L3-kbytes`: integer or "ERR".
-* `host:cpu/<cpu-idx>/threads-per-core`: integer or "ERR".
-* `host:cpu/<cpu-idx>/cores-per-socket`: integer or "ERR".
-
 * `host:cpu/<cpu-idx>/clock/scaling-driver`: Current idle mechanism, taken from `/sys/devices/system/cpu/cpuidle/`.
 * `host:cpu/<cpu-idx>/clock/scaling-governor`: Current idle policy, taken from `/sys/devices/system/cpu/cpuidle/`.
-
 * `host:cpu/<cpu-idx>/online`: online cores for given CPU index, taken from `/sys/devices/system/cpu/<cpu-idx>/online`.
 
 
