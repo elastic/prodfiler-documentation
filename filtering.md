@@ -42,6 +42,7 @@ trace-derived, host-derived and cloud instance-derived keys:
 
 * `trace:comm`: process name.
 * `trace:podname`: pod name.
+* `trace:deploymentname`: same as podname.
 * `trace:containername`: container name.
 
 #### Examples

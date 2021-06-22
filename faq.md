@@ -2,9 +2,27 @@
 
 ## What language runtimes does Prodfiler support?
 
+The following programming languages are currently supported:
+
+* C/C++
+* Go
+* Java HotSpot (JDK 7-16, AOT and compressed pointers are not supported)
+* Python 3.6-3.9
+* PHP 7.3-7.4
+* Ruby 2.5-3.0.1
+* Perl 5.28-5.32
+
 ## How much CPU and RAM will the agent consume?
 
+The Prodfiler agent is designed to be used continuously in production and has
+a tiny performance footprint (< 1% CPU, ~200MB of RAM).
+
 ## Can Prodfiler crash my kernel?
+
+Prodfiler makes use of eBPF to load programs into the kernel. An eBPF program must
+pass the eBPF verifier, which ensures that the program is safe to run, before it's
+loaded into the kernel. This means that even if the eBPF program is buggy, it can
+not crash the kernel.
 
 ## How many machines can I deploy the agent to without your backend infrastructure melting?
 

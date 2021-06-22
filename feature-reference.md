@@ -4,7 +4,7 @@
 * [Traces](#the-traces-view)
 * [Functions](#the-functions-view)
 * [Flamegraph](#the-flamegraph-view)
-* [Filtering the results](./filtering.md)
+* [Filtering the results](#filtering-the-results)
 * [Missing symbols](#dealing-with-missing-symbols)
 
 ## Managing projects
@@ -97,6 +97,10 @@ that the current workload is representative.
 
 The cost and CO2 estimates are based on assumptions that are documented in the
 [feature reference](feature-reference.md).
+
+## Filtering the results
+
+The filtering language has its own documentation [page](./filtering.md).
 
 ## Dealing with missing symbols
 
