@@ -26,16 +26,19 @@ not crash the kernel.
 
 ## How many machines can I deploy the agent to without your backend infrastructure melting?
 
+There is a maximum number of projects and a per-project host limit depending on account type.
+Please contact us to have that limit raised.
+
 ## Filtering
 
 * **Q: Why is a query returning obscure errors?**
-  A: Currently, the error messages returned are not self-explanatory. Sorry! Make sure the query adheres to the above syntax, or feel free to contact us for assistance.
+  A: Currently, the error messages returned are not self-explanatory. Sorry! Make sure the query adheres to the filtering syntax, or feel free to contact us for assistance.
 * **Q: Why are there no results returned?**
   A: Some things to check:
   * There is no validation on the key names. For example, if you use `ec3:ami-id` instead of `ec2:ami-id`, no results will be returned, and no error will be raised.
 * **Q: Why are there too many results returned?**
   A: Some things to check:
-    * Make sure the values in the filter can be interpreted as RE2 regular expressions.
+    * Make sure the values in the filter can be interpreted as [RE2](https://github.com/google/re2/wiki/Syntax) regular expressions.
     Add beginning-of-line and end-of-line matchers if necessary (respectively, `^` and `$`), and remember that `.` matches any character.
 * **Q: Is it possible to know how many / what hosts were matched by a filter?**
   Not at the moment.
