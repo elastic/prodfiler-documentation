@@ -58,13 +58,6 @@ already selected will stay the same.
 
 ![top n functions screenshot](./pictures/top-n-functions.png)
 
-Aside from inspecting the most common traces, you can also inspect the most common **functions**.
-Simply click on the "functions" button in the top navigation bar. The time interval you have
-already selected will stay the same.
-
-![top n functions screenshot](./pictures/top-n-functions.png)
-
-
 ### Comparing the Top-N functions between two time intervals
 
 It can often be helpful to compare two timeframes or subsets of machines - identifying which
@@ -85,18 +78,15 @@ The runtimes to which a particular stack frame belongs are marked by different c
 hues represent python, mint-ish hues represent native userspace code, green-ish hues are JVM, and
 blue-ish hues are from the Linux kernel.
 
-![top n functions screenshot](./pictures/flamegraph-multicolor.png)
+![framegraph screenshot](./pictures/flamegraph-multicolor.png)
 
-![top n functions screenshot](./pictures/flamegraph-kernel.png)
+![flamegraph kernel screenshot](./pictures/flamegraph-kernel.png)
 
 Your mousewheel should allow navigating the flamegraph on the vertical axis; clicking on individual
 frames will re-scale the flamegraph to make the frame the center of the screen. Clicking on an
 already-selected frame will pop up a window that provides estimates for the overall CPU consumed
 by the frame in question - both in the selected timeframe, but also annualized under the assumption
 that the current workload is representative.
-
-The cost and CO2 estimates are based on assumptions that are documented in the
-[feature reference](feature-reference.md).
 
 ## Filtering the results
 
