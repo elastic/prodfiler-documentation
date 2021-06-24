@@ -70,7 +70,7 @@ We have a detailed [FAQ](faq.md) which can answer many of the frequently-asked q
 If you encounter any problem, check our [troubleshooting](troubleshooting.md) page. If that does
 not help, please open an issue and/or contact prodfiler-support@optimyze.cloud
 
-## Supported platforms and dependencies
+## Supported platforms
 
 * Linux x86_64 with kernel version >= 4.15
 
