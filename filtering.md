@@ -34,7 +34,7 @@ While `19.*` is a valid regular expression, it will match `192.168.0.1` as well 
 
 ## Keys supported by Prodfiler
 
-There are currently three types of keys that can be provided when filtering,
+There are currently three types of keys that can be provided when filtering:
 trace-derived, host-derived and cloud instance-derived keys. Trace-derived keys
 filter traces whilst host-derived and cloud instance-derived keys filter hosts.
 
