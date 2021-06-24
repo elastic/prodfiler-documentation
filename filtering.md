@@ -32,11 +32,11 @@ Conceptually, filtering consists of matching keys against values. Valid keys are
 Given that `~` operates on RE2 regular expressions, always keep in mind that values in conditions will be interpreted as such.
 While `19.*` is a valid regular expression, it will match `192.168.0.1` as well as `10.0.1.19`.
 
-
 ## Keys supported by Prodfiler
 
 There are currently three types of keys that can be provided when filtering,
-trace-derived, host-derived and cloud instance-derived keys:
+trace-derived, host-derived and cloud instance-derived keys. Trace-derived keys
+filter traces whilst host-derived and cloud instance-derived keys filter hosts.
 
 ### Trace-derived keys
 
@@ -95,6 +95,17 @@ Values for CPU-derived keys are collected from /proc, sysfs and through CPUID:
   `host:cpu/0/vendor ~ "Intel"`
 
 ### Cloud instance-derived keys
+
+The following keys are available for all cloud providers and encapsulate information in a convenient format
+for filtering:
+
+* `instance:public-ipv4s`: list of all public instance IPs separated by commas.
+* `instance:private-ipv4s`: list of all private instance IPs separated by commas.
+
+#### Examples
+
+* To select a host with public IP (any network interface) `1.2.3.4`:
+  `instance:public-ipv4s ~ "1\.2\.3\.4"`
 
 #### EC2-derived keys
 
@@ -208,6 +219,12 @@ the meaning and format of each value.
 Where `<iface-idx>` and `<sub-idx>`  should usually only have `0` as a valid value, unless you are running
 with a more advanced network configuration. `<ip-idx>` starts from `0` and increases with the number of
 IP addresses.
+
+The IPV6 IPs (if present) from all interfaces are also made available through
+the following keys:
+
+* `instance:public-ipv6s`: list of all public instance IPs separated by commas.
+* `instance:private-ipv6s`: list of all private instance IPs separated by commas.
 
 ##### Examples
 
