@@ -6,6 +6,7 @@ The following programming languages are currently supported:
 
 * C/C++
 * Go
+* Rust
 * Java HotSpot (JDK 7-16, AOT and compressed pointers are not supported)
 * Python 3.6-3.9
 * PHP 7.3-7.4
