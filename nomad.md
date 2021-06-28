@@ -41,7 +41,7 @@ job "prodfiler-agent" {
         image = "optimyze/pf-host-agent:release-beta-6"
         command = "/root/pf-host-agent"
         args = [
-          "--collection-agent", "data.dev.prodfiler.com:443",
+          "--collection-agent", "data.try.prodfiler.com:443",
           "--config", "/etc/prodfiler/pf-host-agent.conf",
           "--optimyze-homedir","/opt/optimyze",
           "--project-id","[YYYY]",

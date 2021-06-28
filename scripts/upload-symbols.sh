@@ -1,4 +1,6 @@
-#!/bin/bash -eu
+#!/usr/bin/env bash
+
+set -eu
 
 export SHELLOPTS
 
@@ -28,7 +30,7 @@ check_requirement date
 check_requirement openssl
 check_requirement stat
 
-PRODFILER_UPLOAD_ENDPOINT="https://dev.prodfiler.com/api/v1/symbols/upload"
+PRODFILER_UPLOAD_ENDPOINT="https://try.prodfiler.com/api/v1/symbols/upload"
 GO_IGNORE_MISSING_DWARF=0
 
 # This script only supports a single file at a time, with an optional debug file.
@@ -70,24 +72,24 @@ has_debug_symbols() {
     if [[ -n "$tag" ]]; then
         return 0
     fi
-    if [[ $GO_IGNORE_MISSING_DWARF == 1 ]] && has_go_pclntab "$file"; then
-        echo "Warning: no DWARF symbols, but .gopclntab found. Symbolization may be incomplete."
+    if [[ $GO_IGNORE_MISSING_DWARF == 1 ]] && is_go_executable "$file"; then
+        echo "Warning: Go symbols found, but no DWARF symbols. Symbolization may be incomplete."
         echo "For a better experience, always provide DWARF symbols if possible."
         return 0
     fi
     return 1
 }
 
-has_go_pclntab() {
-    unset retval
+has_section() {
     local file="$1"
-    readelf --section-headers "$file" | grep -qF '.gopclntab'
+    local section_list="$2"
+    readelf --section-headers "$file" | grep -qF "$section_list"
 }
 
-has_alternative_debug_link() {
-    unset retval
-    local file="$1"
-    readelf --section-headers "$file" | grep -qF '.gnu_debugaltlink'
+is_go_executable() {
+    local section_list file="$1"
+    printf -v section_list ".go.buildinfo\n.gopclntab"
+    has_section "$file" "$section_list"
 }
 
 extract_debug_symbols() {
@@ -96,7 +98,7 @@ extract_debug_symbols() {
     local resultBasename="$2"
     local debugFile
     debugFile="${SCRATCH_DIR}/${resultBasename}"
-    echo "Extracting debug symbols from $filepath to $debugFile..."
+    echo "Extracting debug symbols from '$filepath' to $debugFile ..."
 
     objcopy --only-keep-debug "$filepath" "$debugFile"
 
@@ -123,9 +125,18 @@ copy_additional_sections() {
     unset retval
     local src="$1"
     local dst="$2"
-    local sections=(".gopclntab" ".gosymtab" ".eh_frame")
+    local sections=(".eh_frame" ".eh_frame_hdr")
     local section_file section
     local objcopy_args=()
+
+    if has_section "$src" ".gopclntab"; then
+        # Golang
+        sections+=(".go.buildinfo" ".gopclntab" ".gosymtab")
+    elif has_section "$src" ".go.buildinfo"; then
+        # Golang/PIE, also symbol tables are needed which should be already
+        # copied by extract_debug_symbols()
+        sections+=(".go.buildinfo" ".data.rel.ro")
+    fi
 
     # Extract each section from the source, and copy them to the destination.
     # We have to set the "contents" flag for each section, as NOBITS has previously
@@ -149,7 +160,8 @@ build_debug_file() {
     unset retval
     local resultBasename
 
-    resultBasename="$(basename $DEPLOYED_FILE).debug"
+    resultBasename=$(basename "$DEPLOYED_FILE").debug
+    echo $resultBasename
 
     if [[ -v DEBUG_FILE ]]; then
         if ! has_debug_symbols "$DEBUG_FILE"; then
@@ -173,7 +185,7 @@ readelf --headers "$DEPLOYED_FILE" >/dev/null 2>&1 || die "$DEPLOYED_FILE is not
 build_debug_file
 DEBUG_FILE="$retval"
 
-if has_alternative_debug_link "$DEBUG_FILE"; then
+if has_section "$DEBUG_FILE" ".gnu_debugaltlink"; then
     die "Alternative debug links are not yet supported"
 fi
 
@@ -207,7 +219,7 @@ EOF
 PACKAGE="${SCRATCH_DIR}/${DEPLOYED_FILE_BASENAME}.symtgz"
 tar czf "$PACKAGE" -C "$SCRATCH_DIR" config.json "$DEBUG_FILE_BASENAME"
 
-PACKAGE_BASENAME=$(basename $PACKAGE)
+PACKAGE_BASENAME=$(basename "$PACKAGE")
 
 echo "Uploading $PACKAGE_BASENAME to $PRODFILER_UPLOAD_ENDPOINT..."
 MD5=$(openssl md5 -binary "$PACKAGE" | openssl base64)
@@ -219,4 +231,3 @@ curl -vfL \
     -H "User: $USERNAME" \
     -H "Content-MD5: $MD5" \
     "${PRODFILER_UPLOAD_ENDPOINT}/${PACKAGE_BASENAME}"
-
