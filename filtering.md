@@ -11,10 +11,11 @@ The Prodfiler user interface exposes this functionality through the "Filter" box
 
 Conceptually, filtering consists of matching keys against values. Valid keys are defined by Prodfiler and documented below.
 
-* A condition on a given key `key1` must be of the form `key1 ~ "regexp1"`.
+* A condition on a given key `key1` must be of the form `key1 ~ "regexp1"` or `key1 = "value1"`.
   The value must be a string in double quotes.
-* `~` is currently the only supported comparison operator.
+* `~` and `=` are currently the only supported comparison operators.
   Literally, the `~` operator means "matches the following [RE2 regular expression](https://github.com/google/re2/wiki/Syntax)".
+  The `=` operator means "matches the following string exactly" (case-sensitive).
 * Multiple conditions can be joined with the `AND` boolean operator. For example, the following has a valid syntax:
   `key1 ~ "regexp1" AND key2 ~ "regexp2"`
 * Other boolean operators (like `OR`) are not supported at the moment.
@@ -40,6 +41,8 @@ filter traces whilst host-derived and cloud instance-derived keys filter hosts.
 
 ### Trace-derived keys
 
+**NOTE**: Only the `=` operator is valid for trace-derived keys.
+
 * `trace:comm`: process name.
 * `trace:podname`: pod name.
 * `trace:deploymentname`: same as podname.
@@ -48,11 +51,11 @@ filter traces whilst host-derived and cloud instance-derived keys filter hosts.
 #### Examples
 
 * To select traces belonging to `python`:
-  `trace:comm ~ "python"`
+  `trace:comm = "python"`
 * To select traces not belonging to `python`:
-  `NOT trace:comm ~ "python"`
+  `NOT trace:comm = "python"`
 * To select traces belonging to pod `podname`:
-  `trace:podname ~ "podname"`
+  `trace:podname = "podname"`
 
 ### Host-derived keys
 
