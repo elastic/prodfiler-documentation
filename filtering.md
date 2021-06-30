@@ -151,6 +151,15 @@ Refer to the [EC2 documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserG
 
 Where `<MAC>` should be a MAC address of form `0a:0b:0c:0d:0e:0f`.
 
+For convenience, EC2 instance tags are also made available for filtering via:
+
+* `ec2:tags/<TAG-KEY>`
+
+Where `<TAG-KEY>` should be an EC2 tag key name.
+
+**NOTE**: In order for EC2 instance tags to be collected, the instance needs
+to have an `IAM` role assigned with a policy that allows for `ec2:DescribeTags`.
+
 ##### Examples
 
 * To select instances launched from AMI `ami-123456789`:  
@@ -159,6 +168,8 @@ Where `<MAC>` should be a MAC address of form `0a:0b:0c:0d:0e:0f`.
   `ec2:placement/availability-zone ~ "eu-west-1a"`
 * To select the instance with public IP `1.2.3.4`: 
   `ec2:public-ipv4 ~ "^1\.2\.3\.4$"`
+* To select the instances tagged with `owner:bar@test.baz`:
+  `ec2:tags/owner = "bar@test.baz`
 
 #### GCE-derived keys
 
