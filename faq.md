@@ -27,8 +27,8 @@ not crash the kernel.
 
 ## How many machines can I deploy the agent to without your backend infrastructure melting?
 
-There is a maximum number of projects and a per-project host limit depending on account type.
-Please contact us to have that limit raised.
+There is a maximum number of projects (`1`) and a per-project host limit (`20`)
+for new accounts. Please contact us to have that limit raised.
 
 ## Filtering
 
