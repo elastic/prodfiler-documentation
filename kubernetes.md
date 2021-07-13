@@ -35,7 +35,7 @@ For more complex deployment you may want to customize Helm values.
 You can list the possible values using:
 
 ```bash
-helm show values optimyze-prodfiler/pf-host-agent
+helm show values optimyze/pf-host-agent
 ```
 
 The most notable configuration knobs are `nodeSelector` and `tolerations` to deploy Prodfiler Host Agent
