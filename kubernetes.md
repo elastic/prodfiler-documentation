@@ -25,7 +25,7 @@ The agent is deployed as a DaemonSet and requires a `privileged` security contex
   ```bash
   helm install --namespace=prodfiler pf-host-agent \
   --set "projectID=<projectID>,secretToken=<secretToken>" \
-  --set "dockerHub.password=<accessToken> \
+  --set "dockerHub.password=<accessToken>" \
   optimyze/pf-host-agent
   ```
 
