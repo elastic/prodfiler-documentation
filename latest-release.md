@@ -1,1 +1,1 @@
-release-beta-7
+release-beta-8

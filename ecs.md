@@ -59,7 +59,7 @@ Run the script:
 ./prodfiler-ecs-task.sh --cluster-arn <YOUR_CLUSTER_ARN> \
         --collection-agent "data.try.prodfiler.com:443" \
         --project-id <YOUR_PROJECT_ID>
-        --version "release-beta-7"
+        --version "release-beta-8"
         --tracers "all"
         --secret-token <YOUR_SECRET_TOKEN>
 ```
