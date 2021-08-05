@@ -59,9 +59,8 @@ filter traces whilst host-derived and cloud instance-derived keys filter hosts.
 
 ### Host-derived keys
 
-* `host:ip`: the IP address of the machine.
+* `host:ip`: the IP address of the machine. When multiple IPs are possible, only one is used: the IP address of the interface through which the Prodfiler traffic is routed.
 * `host:hostname`: the hostname of the machine that is running the Prodfiler agent.
-  When multiple IPs are possible, only one is used: the IP address of the interface through which the Prodfiler traffic is routed.
 * `host:kernel_version`: the output of `uname -r` on the machine.
 * `host:kernel_proc_version`: the contents of `/proc/version` on the machine.
 * `host:sysctl/kernel.bpf_stats_enabled`: value of kernel parameter.
