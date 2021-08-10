@@ -230,4 +230,6 @@ curl -vfL \
     -T "$PACKAGE" \
     -H "User: $USERNAME" \
     -H "Content-MD5: $MD5" \
+    -H "x-amz-meta-file-hash: $DEPLOYED_FILE_HASH" \
     "${PRODFILER_UPLOAD_ENDPOINT}/${PACKAGE_BASENAME}"
+
