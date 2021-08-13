@@ -66,6 +66,12 @@ filter traces whilst host-derived and cloud instance-derived keys filter hosts.
 * `host:sysctl/kernel.bpf_stats_enabled`: value of kernel parameter.
 * `host:sysctl/kernel.unprivileged_bpf_disabled`: value of kernel parameter.
 * `host:sysctl/net.core.bpf_jit_enable`: value of kernel parameter.
+* `host:tags`: user-specified tags.
+
+User-specified tags can be provided to Prodfiler via command-line (-tags), configuration
+file directive (tags) or through an environment variable (PRODFILER_TAGS).
+Each tag must match  `^[a-zA-Z0-9-:._]+$` regex and use `;` as a separator.
+Invalid tags will be dropped and warnings issued on startup.
 
 Additionally, a number of CPU-derived keys are supported, with a prefix of
 `host:cpu/<cpu-idx>/` where `<cpu-idx>` must be a logical CPU index, starting from `0`.
@@ -95,6 +101,8 @@ Values for CPU-derived keys are collected from /proc, sysfs and through CPUID:
   `host:hostname ~ "^(prod|dev)-"`
 * To select hosts with Intel CPUs:
   `host:cpu/0/vendor ~ "Intel"`
+* To select hosts with user-specified tag containing `alpha:beta`:
+  `host:tags ~ "alpha:beta"`
 
 ### Cloud instance-derived keys
 
