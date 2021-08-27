@@ -30,6 +30,21 @@ not crash the kernel.
 There is a maximum number of projects (`1`) and a per-project host limit (`20`)
 for new accounts. Please contact us to have that limit raised.
 
+## Why are my stack traces not symbolised? 
+
+The Prodfiler agent does not require debug symbols in order to unwind stacks,
+but our backend does require them in order to symbolise stack traces in the
+UI. We automatically mirror, index and use the debug packages provided by
+several distributions (e.g. Ubuntu, Debian, Fedora and Amazon Linux), so if your
+traces are from applications in the official repositories then they should be
+automatically symbolised. If they are not, please let us know via the [community
+page](https://community.prodfiler.com). 
+
+For custom binaries, or binaries that we have not indexed, you need to ship us
+your symbols. We provide a script to do so, which can be integrated with your
+CI/CD system if necessary. See [here](https://github.com/optimyze/prodfiler-documentation/blob/main/feature-reference.md#dealing-with-missing-symbols)
+for details. 
+
 ## Filtering
 
 * **Q: Why is a query returning obscure errors?**
