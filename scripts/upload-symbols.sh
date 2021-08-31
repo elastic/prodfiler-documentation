@@ -30,7 +30,7 @@ check_requirement date
 check_requirement openssl
 check_requirement stat
 
-PRODFILER_UPLOAD_ENDPOINT="https://try.prodfiler.com/api/v1/symbols/upload"
+PRODFILER_UPLOAD_ENDPOINT="https://run.prodfiler.com/api/v1/symbols/upload"
 GO_IGNORE_MISSING_DWARF=0
 
 # This script only supports a single file at a time, with an optional debug file.
