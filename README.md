@@ -11,6 +11,16 @@ let us know -- we will try to fix it ASAP.
 
 To ask any questions related to Prodfiler please head over to our [community forum](https://community.prodfiler.com).
 
+## Index
+
+* [Getting Started](getting-started.md)
+* [Internals](internals.md)
+* [Filtering](filtering.md)
+* Deploying on [Kubernetes](kubernetes.md), [ECS](ecs.md) and [Nomad](nomad.md)
+* [Troubleshooting](troubleshooting.md)
+* [Feature Reference](feature-reference.md)
+* [FAQ](faq.md)
+
 ## What is Prodfiler?
 
 Prodfiler is the world's first **distributed lightweight continuous whole-system profiler**. This is
