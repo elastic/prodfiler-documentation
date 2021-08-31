@@ -53,11 +53,6 @@ Continuous in-production profiling can provide the following benefits:
 As a side effect, you can reduce your CO2 footprint, since savings in CPU consumption translate
 pretty directly into savings in power consumption.
 
-## What is so special about Prodfiler?
-
-Prodfiler has a number of unique capabilities not available elsewhere. Find out more on our
-[Prodfiler internals](internals.md) page. 
-
 ## How do I get started?
 
 Prodfiler deployment is easy: You sign up and create a project; once that is done, you receive
@@ -77,8 +72,7 @@ We have a detailed [FAQ](faq.md) which can answer many of the frequently-asked q
 
 ## Troubleshooting
 
-If you encounter any problem, check our [troubleshooting](troubleshooting.md) page. If that does
-not help, please open an issue and/or contact prodfiler-support@optimyze.cloud
+If you encounter any problems please contact us via [our community forum](https://community.prodfiler.com).
 
 ## Supported platforms
 
