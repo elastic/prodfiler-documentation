@@ -9,6 +9,8 @@ In these pages, we strive to provide you with all the information you need to us
 find there is anything missing, or have a question not addressed here, please open an issue and
 let us know -- we will try to fix it ASAP.
 
+To ask any questions related to Prodfiler please head over to our [community forum](https://community.prodfiler.com).
+
 ## What is Prodfiler?
 
 Prodfiler is the world's first **distributed lightweight continuous whole-system profiler**. This is
