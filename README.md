@@ -14,10 +14,8 @@ To ask any questions related to Prodfiler please head over to our [community for
 ## Index
 
 * [Getting Started](getting-started.md)
-* [Internals](internals.md)
 * [Filtering](filtering.md)
 * Deploying on [Kubernetes](kubernetes.md), [ECS](ecs.md) and [Nomad](nomad.md)
-* [Troubleshooting](troubleshooting.md)
 * [Feature Reference](feature-reference.md)
 * [FAQ](faq.md)
 
