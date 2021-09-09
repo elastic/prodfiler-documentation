@@ -41,7 +41,7 @@ docker run --name prodfiler --privileged --pid=host -v /etc/machine-id:/etc/mach
    -v /sys/kernel/debug:/sys/kernel/debug:ro -v /dev/null:/etc/prodfiler/prodfiler.conf \
    -e PRODFILER_PROJECT_ID=[YYYY] \
    -e PRODFILER_SECRET_TOKEN=[ZZZZ] \
-   -e PRODFILER_COLLECTION_AGENT=data.try.prodfiler.com:443 \
+   -e PRODFILER_COLLECTION_AGENT=data.run.prodfiler.com:443 \
    optimyze/pf-host-agent:release-1.0.0 /root/pf-host-agent -t all
 ```
 
@@ -73,4 +73,10 @@ Please refer to the instructions [here](./nomad.md).
 ### Next steps
 
 After about 30 minutes, you should have a bit of data to [inspect](./feature-reference.md).
+
+## Network access requirements
+
+To ensure continuity of service, make sure the Prodfiler agent has network connectivity to `*.prodfiler.com` on port 443. IP addresses may change without notice.
+
+In case your environment requires a proxy to be used, note that the agent will honor the `HTTPS_PROXY` environment variable.
 
