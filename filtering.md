@@ -11,11 +11,12 @@ The Prodfiler user interface exposes this functionality through the "Filter" box
 
 Conceptually, filtering consists of matching keys against values. Valid keys are defined by Prodfiler and documented below.
 
-* A condition on a given key `key1` must be of the form `key1 ~ "regexp1"` or `key1 = "value1"`.
+* A condition on a given key `key1` must be of the form `key1 ~ "regexp1"`, `key1 = "value1"`, or `key1 STARTSWITH "value1"`.
   The value must be a string in double quotes.
-* `~` and `=` are currently the only supported comparison operators.
+* `~`, `=`, and `STARTSWITH` are currently the only supported comparison operators.
   Literally, the `~` operator means "matches the following [RE2 regular expression](https://github.com/google/re2/wiki/Syntax)".
   The `=` operator means "matches the following string exactly" (case-sensitive).
+  The `STARTSWITH` operator means "starts with the following string exactly" (case-sensitive).
 * Multiple conditions can be joined with the `AND` boolean operator. For example, the following has a valid syntax:
   `key1 ~ "regexp1" AND key2 ~ "regexp2"`
 * Other boolean operators (like `OR`) are not supported at the moment.
