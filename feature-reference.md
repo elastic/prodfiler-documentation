@@ -6,6 +6,7 @@
 * [Flamegraph](#the-flamegraph-view)
 * [Filtering the results](#filtering-the-results)
 * [Missing symbols](#dealing-with-missing-symbols)
+* [Host agent configuration flags](#host-agent-configuration-flags)
 
 ## Managing projects
 
@@ -151,5 +152,157 @@ working on a solution that - in extreme circumstances - can be used to import sy
 *similar* executable, e.g. the same software and version compiled from scratch. Please reach out
 if you have a need for this so we can prioritize development accordingly.
 
+## Host-agent configuration options
+
+The host-agent supports various configuration options, you can list them running the binary with the `-h` flag.
+
+* binary
+    ```shell
+    sudo ./pf-host-agent -h
+    ```
+
+* Docker
+    ```shell
+    $ docker run --rm -ti optimyze/pf-host-agent:release-1.0.1 /root/pf-host-agent -h
+    ```
+
+The options can be configured with (in order of precedence):
+
+* CLI arguments
+* environment variables
+* configuration file
 
 
+### CLI flags
+
+The format for flags can either be `-flag value` and `flag=value`. Remember to wrap `value` into single or double quotes
+if they contain spaces or special characters that might be interpreted by the shell.
+
+### Configuration file
+
+By default, the host-agent will look for a configuration file in `/etc/prodfiler/prodfiler.conf`.
+You can customize the file path with the `-config` CLI flag.
+The file content is expected to be in _plain_ format, as in:
+        
+        flag value1
+        anotherflag value2
+  
+This is the configuration mode used in Kubernetes charts, via a `configMap`.
+
+### Environment variables
+
+The host-agent can be configured with environment variables prefixed with `PRODFILER_`.
+Every CLI flag can be turned into an environment variable that will be parsed with the following conversion:
+
+* remove the flag's first hyphen
+* replace all remaining hyphens with an underscore
+* capitalize all letters
+* prefix the flag with `PRODFILER_`
+
+For example:
+
+| flag | env variable |
+|------|--------------|
+| `-config` | `PRODFILER_CONFIG` |
+| `-project-id` | `PRODFILER_PROJECT_ID`|
+
+### Description of configuration options
+```
+  -cache-directory string
+   The directory where prodfiler can store cached data. (default "/var/cache/optimyze")
+```
+* This folder must exist on the host where host-agent runs, it will not be created autoamtically by the binary but it's
+  part of the OS packages and Kubernetes install process. 
+
+```
+  -collection-agent string
+        The collection agent address in the format of host:port. (default "data.run.prodfiler.com:443")
+```
+* Address of collection-agent: customize _only_ if you know you need to send data in a non-default location
+
+```
+  -config string
+        Path to the prodfiler configuration file. (default "/etc/prodfiler/prodfiler.conf")
+```
+* Path of the configuration file.
+
+```
+  -copyright
+        Show copyright and short license text.
+```
+* Prints the copyright notice and exit
+
+```
+  -disable-tls
+        Disable encryption for data in transit.
+```
+
+* Disables TLS encryption for the communication with collection-agent: set it _only_ if you know you need to send data in
+  an unencrypted, non-default location.
+
+```
+  -no-kernel-version-check
+        Disable checking kernel version for eBPF support. Use at your own risk, to run the agent on older kernels with backported eBPF features.
+```
+
+* Allows experimentally running the host-agent on unsupported kernels, disabling the kernel version check.
+
+```
+  -project-id int
+        The project ID to store the data in.
+```
+
+* The project ID where profiles fetched by the host-agent will be stored; instructions in the UI will fill it for you.
+
+```
+  -secret-token string
+        The secret token associated with the project id.
+```
+
+* The secret token to authenticate with the project ID where profiles will be stored; instructions in the UI will fill
+  it for you.
+
+```
+  -tags string
+        User-specified tags separated by ';'. Each tag should match '^[a-zA-Z0-9-:._]+$'.
+```
+
+* User-provided tags to mark profiles for a given host: these tags can be used to filter data in the UI as mentioned
+  in [filtering](filtering.md#host-derived-keys).
+
+```
+  -t string
+        Shorthand for -tracers. (default "all")
+  -tracers string
+        Comma-separated list of tracers to include. (default "all")
+```
+
+* The tracers will process stacktraces for various languages: we recommend to use `all` to have a holistic view of your
+  applications, with stack traces spanning from user to kernel-space.
+
+  Valid tracers are:
+    * `native`: native code, such as C/C++/Rust/Go (includes kernel frames)
+    * `hotspot`: JVM frames (requires `native` to be included in the list)
+    * `python`: Python
+    * `php`: PHP
+    * `ruby`: Ruby
+    * `perl`: Perl
+
+  More languages will be supported soon!
+
+```
+  -upload-symbols
+        Enables automatic uploading of Golang symbols to the Prodfiler service, for symbolization.
+```
+
+* **Currently supported only for Go binaries**. Upload symbols automatically to the backend: when enabled, you are only
+  required to upload symbols for Go binaries if they are stripped, see [above](#dealing-with-missing-symbols).
+
+```
+  -v	
+      Shorthand for -verbose.
+  -verbose
+      Enable verbose logging and debugging capabilities.
+```
+
+* Log in verbose mode: set it _only_ when the host-agent fails to start or no data appears in the UI. 
