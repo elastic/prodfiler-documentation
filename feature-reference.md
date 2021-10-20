@@ -158,7 +158,7 @@ The host-agent supports various configuration options, you can list them running
 
 * binary
     ```shell
-    sudo ./pf-host-agent -h
+    ./pf-host-agent -h
     ```
 
 * Docker
@@ -175,7 +175,7 @@ The options can be configured with (in order of precedence):
 
 ### CLI flags
 
-The format for flags can either be `-flag value` and `flag=value`. Remember to wrap `value` into single or double quotes
+The format for flags can either be `-flag value` or `flag=value`. Remember to wrap `value` into single or double quotes
 if they contain spaces or special characters that might be interpreted by the shell.
 
 ### Configuration file
@@ -271,8 +271,6 @@ For example:
   in [filtering](filtering.md#host-derived-keys).
 
 ```
-  -t string
-        Shorthand for -tracers. (default "all")
   -tracers string
         Comma-separated list of tracers to include. (default "all")
 ```
@@ -295,14 +293,11 @@ For example:
         Enables automatic uploading of Golang symbols to the Prodfiler service, for symbolization.
 ```
 
-* **Currently supported only for Go binaries**. Upload symbols automatically to the backend: when enabled, you are only
-  required to upload symbols for Go binaries if they are stripped, see [above](#dealing-with-missing-symbols).
+* Automatic upload of parts of unknown executables to support symbolizing these frames. **Currently supported only for Go executables**.
 
 ```
-  -v	
-      Shorthand for -verbose.
   -verbose
       Enable verbose logging and debugging capabilities.
 ```
 
-* Log in verbose mode: set it _only_ when the host-agent fails to start or no data appears in the UI. 
+* Log in verbose mode: set it _only_ when the host-agent fails to start or no data appears in the UI after 10 minutes. 
