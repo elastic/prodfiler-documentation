@@ -38,7 +38,7 @@ job "prodfiler-agent" {
     task "prodfiler-agent" {
       driver = "docker"
       config {
-        image = "optimyze/pf-host-agent:release-2.0.0"
+        image = "optimyze/pf-host-agent:release-2.1.0"
         command = "/root/pf-host-agent"
         args = [
           "--collection-agent", "data.try.prodfiler.com:443",
