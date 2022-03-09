@@ -12,10 +12,10 @@ The following programming languages are currently supported:
 * Go
 * Rust
 * Java HotSpot (JDK 7-16, AOT and compressed pointers are not supported)
-* Python 3.6-3.9
+* Python 3.6-3.10
 * PHP 7.3-7.4
 * Ruby 2.5-3.0.1
-* Perl 5.28-5.32
+* Perl 5.28-5.34
 
 ## How much CPU and RAM will the agent consume?
 
