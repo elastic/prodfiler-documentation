@@ -25,8 +25,8 @@ To run this script we suggest to use AWS credentials with the following policies
 
 ## Deploying Prodfiler 
 
-Both scripts are _not_ idempotent so they should be executed from AWS credentials 
-with the proper authorizations to manage the impacted resources. If the script fails during the execution,
+Both scripts are _not_ idempotent, so please be sure to run them with AWS credentials 
+that are granted with the authorizations listed above. If the script fails during the execution,
 the resources created so far will have to be deleted manually for the script to succeed on the next run.
 
 Scripts use AWS CLI v2, refer to [the official documentation](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)
@@ -34,10 +34,19 @@ to set it up.
 
 To see the help message, execute the scripts with `-h` or `--help`.
 
-### Authentication and secrets
+### Quick start
+
+Follow the instructions in the `... > Instructions` menu from the Prodfiler UI, switching to the ECS tab.
+You will be guided through the execution of the scripts mentioned above.
+
+### Customize the setup
+
+The following describes how to change the default settings.
+
+#### Authentication and secrets
 
 Pass the provided credentials as arguments to this script in order to access the private Docker image.
-Replace the `<PASSWORD>` placeholder content with the token released to you by your Optimyze contact.
+Replace the `<PASSWORD>` placeholder content with the token shown in the `Instructions` menu.
 Run this command from the root of the `scripts/ecs/awscli` directory:
 
 ```bash
@@ -46,18 +55,20 @@ Run this command from the root of the `scripts/ecs/awscli` directory:
 
 It will create the secrets used by the ECS DAEMON task using AWS Secret Manager.
 
-### ECS task
+#### ECS task
 
 Fetch the `projectID` and `secretToken` values visible in the Prodfiler web UI
 when creating a new project.
 The values are defined as environment variables in the deployment command visible in the UI,
 they are called `PRODFILER_PROJECT_ID` and `PRODFILER_SECRET_TOKEN` respectively.
 
-Run the script:
+To customize the setup, edit [task.json.template](scripts/ecs/awscli/task.json.template) as required by your environment.
+
+Then run the script, passing the proper data as displayed in the `Instructions` UI:
 
 ```bash
 ./prodfiler-ecs-task.sh --cluster-arn <YOUR_CLUSTER_ARN> \
-        --collection-agent "data.try.prodfiler.com:443" \
+        --collection-agent "data-v2.run.prodfiler.com:443" \
         --project-id <YOUR_PROJECT_ID>
         --version "release-2.1.0"
         --tracers "all"

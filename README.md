@@ -16,6 +16,7 @@ To ask any questions related to Prodfiler please head over to our [community for
 * [Getting Started](getting-started.md)
 * [Filtering](filtering.md)
 * Deploying on [Kubernetes](kubernetes.md), [ECS](ecs.md) and [Nomad](nomad.md)
+* [Upgrading](upgrading.md) an existing deployment 
 * [Feature Reference](feature-reference.md)
 * [FAQ](faq.md)
 
@@ -77,4 +78,3 @@ If you encounter any problems please contact us via [our community forum](https:
 ## Supported platforms
 
 * Linux x86_64 with kernel version >= 4.15
-
