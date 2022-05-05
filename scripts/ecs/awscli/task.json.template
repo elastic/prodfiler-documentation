@@ -9,8 +9,6 @@
         "-t=_tracers_",
         "-collection-agent=_collectionAgentHostPort_",
         "-project-id=_projectId_",
-        "-optimyze-homedir=/opt/optimyze",
-        "-config=/dev/null",
         "-secret-token=_secretToken_"
       ],
       "privileged": true,
@@ -51,7 +49,7 @@
       "name": "prodfiler"
     }
   ],
-  "memory": "512",
+  "memory": "400",
   "family": "optimyze-prodfiler",
   "pidMode": "host",
   "requiresCompatibilities": [
@@ -69,6 +67,12 @@
       "name": "kerneldebug",
       "host": {
         "sourcePath": "/sys/kernel/debug"
+      }
+    },
+    {
+      "name": "dockersocket",
+      "host": {
+        "sourcePath": "/var/run/docker.sock"
       }
     }
   ]

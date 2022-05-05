@@ -25,7 +25,6 @@ job "prodfiler-agent" {
         image = "optimyze/pf-host-agent:RELEASE"
         command = "/root/pf-host-agent"
         args = [
-          "-config","/dev/null",
           "-t", "all",
         ]
         privileged = true
@@ -47,7 +46,7 @@ job "prodfiler-agent" {
         read_only = false
       }
       resources {
-        memory = 512
+        memory = 400
       }
       env {
         PRODFILER_PROJECT_ID="PROJECTID"

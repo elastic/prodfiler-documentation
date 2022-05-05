@@ -1,6 +1,6 @@
 # Getting started with Prodfiler
 
-Getting started with Prodfiler is easy: You create an account and a project, receive instructions
+Getting started with Prodfiler is easy: you create an account and a project, receive instructions
 with which you can launch the agent, and 30 minutes after the agent is deployed, you should
 have information you can inspect.
 
@@ -41,7 +41,7 @@ docker run --name prodfiler --privileged --pid=host -v /etc/machine-id:/etc/mach
    -v /sys/kernel/debug:/sys/kernel/debug:ro -v /dev/null:/etc/prodfiler/prodfiler.conf \
    -e PRODFILER_PROJECT_ID=[YYYY] \
    -e PRODFILER_SECRET_TOKEN=[ZZZZ] \
-   -e PRODFILER_COLLECTION_AGENT=data.try.prodfiler.com:443 \
+   -e PRODFILER_COLLECTION_AGENT=data-v2.run.prodfiler.com:443 \
    optimyze/pf-host-agent:release-2.1.0 /root/pf-host-agent -t all
 ```
 
@@ -73,4 +73,3 @@ Please refer to the instructions [here](./nomad.md).
 ### Next steps
 
 After about 30 minutes, you should have a bit of data to [inspect](./feature-reference.md).
-
