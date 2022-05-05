@@ -34,7 +34,7 @@ Use the commands provided in the UI in the `Instructions` menu, switching to the
 ### Kubernetes
 
 If you installed via Helm following the instructions in the UI, without any customizations to namespace or release name,
-you can upgrade with the following:
+you can upgrade with:
     
     PRODFILER_VERSION=$(curl -s https://documentation.prodfiler.com/latest-release.md)
     helm -n prodfiler upgrade pf-host-agent --set version=${PRODFILER_VERSION} \
