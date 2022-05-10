@@ -49,7 +49,7 @@ job "prodfiler-agent" {
     task "prodfiler-agent" {
       driver = "docker"
       config {
-        image = "optimyze/pf-host-agent:${RELEASE_VERSION}"
+        image = "optimyze/pf-host-agent:v2.2.0"
         command = "/root/pf-host-agent"
         args = [
           "-t", "all",
