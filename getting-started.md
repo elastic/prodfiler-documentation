@@ -42,11 +42,11 @@ docker run --name prodfiler --privileged --pid=host -v /etc/machine-id:/etc/mach
    -e PRODFILER_PROJECT_ID=[YYYY] \
    -e PRODFILER_SECRET_TOKEN=[ZZZZ] \
    -e PRODFILER_COLLECTION_AGENT=data-v2.run.prodfiler.com:443 \
-   optimyze/pf-host-agent:v2.3.1 /root/pf-host-agent -t all
+   optimyze/pf-host-agent:v2.3.2 /root/pf-host-agent -t all
 ```
 
 Let's unpack this: The first line logs you into the `dockerhub` repository that contains the
-container `optimyze/pf-host-agent:v2.3.1`, and the second line starts this container
+container `optimyze/pf-host-agent:v2.3.2`, and the second line starts this container
 with your project ID and a secret token (that you need to keep secret to ensure that others cannot
 pollute your project with data) configured as environment variables.
 The container needs to be `privileged` because Prodfiler interacts with kernel features that are
