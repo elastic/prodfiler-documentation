@@ -285,6 +285,7 @@ For example:
     * `php`: PHP
     * `ruby`: Ruby
     * `perl`: Perl
+    * `v8`: NodeJS/V8
 
   More languages will be supported soon!
 

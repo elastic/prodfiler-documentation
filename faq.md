@@ -16,6 +16,7 @@ The following programming languages are currently supported:
 * PHP 7.3-7.4
 * Ruby 2.5-3.0.1
 * Perl 5.28-5.34
+* NodeJS/V8 14-18
 
 ## How much CPU and RAM will the agent consume?
 
