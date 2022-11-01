@@ -163,7 +163,7 @@ The host-agent supports various configuration options, you can list them running
 
 * Docker
     ```shell
-    $ docker run --rm -ti optimyze/pf-host-agent:v2.3.2 /root/pf-host-agent -h
+    $ docker run --rm -ti optimyze/pf-host-agent:v2.4.1 /root/pf-host-agent -h
     ```
 
 The options can be configured with (in order of precedence):
