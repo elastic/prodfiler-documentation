@@ -70,7 +70,7 @@ Then run the script, passing the proper data as displayed in the `Instructions` 
 ./prodfiler-ecs-task.sh --cluster-arn <YOUR_CLUSTER_ARN> \
         --collection-agent "data-v2.run.prodfiler.com:443" \
         --project-id <YOUR_PROJECT_ID>
-        --version "v2.5.2"
+        --version "v2.5.3"
         --tracers "all"
         --secret-token <YOUR_SECRET_TOKEN>
 ```
